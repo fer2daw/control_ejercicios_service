@@ -1,11 +1,12 @@
 package negocio.dominio;
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
  *
  * @author fernandoarenasdev
  */
-public class Ejercicio {
+public class Ejercicio implements Serializable{
     private int idEjercicio;
     private String nombreEjercicio;
     private String descripcionEjercicio;

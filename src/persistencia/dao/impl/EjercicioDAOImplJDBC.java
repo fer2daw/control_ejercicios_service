@@ -120,7 +120,7 @@ public class EjercicioDAOImplJDBC implements EjercicioDAO {
     @Override
     public List<Ejercicio> findAll() {
           
-         List<Ejercicio> ejercicios = new ArrayList();
+         List<Ejercicio> ejercicios = new ArrayList<>();
         
         try {
            
@@ -149,7 +149,7 @@ public class EjercicioDAOImplJDBC implements EjercicioDAO {
 
     @Override
     public List<Ejercicio> findByCategoria(String categoriaEjercicio) {
-         List<Ejercicio> ejercicios = new ArrayList();
+         List<Ejercicio> ejercicios = new ArrayList<>();
         
         try {
            
