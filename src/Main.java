@@ -1,15 +1,15 @@
 
 import java.sql.Date;
 import java.util.List;
-import negocio.dominio.Ejercicio;
+import com.ferdeveloper.negocio.dominio.Ejercicio;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
-import persistencia.dao.EjercicioDAO;
-import persistencia.dao.impl.EjercicioDAOImplJDBC;
-import persistencia.dao.impl.HibernateUtil;
+import com.ferdeveloper.persistencia.dao.EjercicioDAO;
+import com.ferdeveloper.persistencia.dao.impl.EjercicioDAOImplJDBC;
+import com.ferdeveloper.persistencia.dao.impl.HibernateUtil;
 
 /**
  *
@@ -30,13 +30,8 @@ public class Main {
 
             Session session = HibernateUtil.getSessionFactory().getCurrentSession();
             Ejercicio ejercicioInsert = new Ejercicio(7, "hu", "h1", "h1", Date.valueOf("2016-02-18"), "h1");
-            //Ejercicio ejercicio = (Ejercicio) session.get(Ejercicio.class, 2);
-            session.beginTransaction();
-
-            session.delete(ejercicioInsert); //<|--- Aqui guardamos el objeto en la base de datos.
-
-            session.getTransaction().commit();
-            //System.out.println(ejercicio.getFechaEjercicio());
+            Ejercicio ejercicio = (Ejercicio) session.get(Ejercicio.class, 2);
+            System.out.println(ejercicio.getFechaEjercicio());
         } finally {
             HibernateUtil.closeSessionAndUnbindFromThread();
         }
