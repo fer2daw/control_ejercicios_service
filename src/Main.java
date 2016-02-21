@@ -23,20 +23,20 @@ public class Main {
     public static void main(String[] args) {
         EjercicioDAO ejercicioDAO = new EjercicioDAOImplJDBC();
 
-        HibernateUtil.buildSessionFactory();
-
-        try {
-            HibernateUtil.openSessionAndBindToThread();
-
-            Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-            Ejercicio ejercicioInsert = new Ejercicio(7, "hu", "h1", "h1", Date.valueOf("2016-02-18"), "h1");
-            Ejercicio ejercicio = (Ejercicio) session.get(Ejercicio.class, 2);
-            System.out.println(ejercicio.getFechaEjercicio());
-        } finally {
-            HibernateUtil.closeSessionAndUnbindFromThread();
-        }
-
-        HibernateUtil.closeSessionFactory();
+//        HibernateUtil.buildSessionFactory();
+//
+//        try {
+//            HibernateUtil.openSessionAndBindToThread();
+//
+//            Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//            //Ejercicio ejercicioInsert = new Ejercicio(7, "hu", "h1", "h1", Date.valueOf("2016-02-18"), "h1");
+//            Ejercicio ejercicio = (Ejercicio) session.get(Ejercicio.class, 7);
+//            System.out.println(ejercicio.getCategoriaEjercicio());
+//        } finally {
+//            HibernateUtil.closeSessionAndUnbindFromThread();
+//        }
+//
+//        HibernateUtil.closeSessionFactory();
 
         //Ejercicio ejercicio=(Ejercicio)session.get(Ejercicio.class,2);
         //System.out.println(ejercicioDAO.get(1).getDescripcionEjercicio());

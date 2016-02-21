@@ -12,6 +12,8 @@ import com.ferdeveloper.negocio.dominio.Ejercicio;
 import com.ferdeveloper.persistencia.dao.EjercicioDAO;
 import com.ferdeveloper.persistencia.jdbc.ConnectionFactory;
 import com.ferdeveloper.persistencia.jdbc.impl.ConnectionFactoryImplDriveManager;
+import java.sql.Connection;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -19,17 +21,21 @@ import com.ferdeveloper.persistencia.jdbc.impl.ConnectionFactoryImplDriveManager
  */
 public class EjercicioDAOImplJDBC implements EjercicioDAO {
 
+    @Autowired
+    ConnectionFactory connectionFactory;
+
     @Override
     public Ejercicio get(int idEjercicio) {
 
-        Ejercicio ejercicio = null;
-
         try {
-            ConnectionFactory connectionFactory = new ConnectionFactoryImplDriveManager();
-
+            Ejercicio ejercicio = null;
+            Connection connection = connectionFactory.getConnection();
+            
             String selectSQL = "SELECT nombreEjercicio, descripcionEjercicio, categoriaEjercicio, fechaEjercicio, observacionesEjercicio FROM ejercicios WHERE idEjercicio = ?";
-            PreparedStatement preparedStatement = connectionFactory.getConnection().prepareStatement(selectSQL);
+            
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             preparedStatement.setInt(1, idEjercicio);
+            
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 String nombreEjercicio = rs.getString("nombreEjercicio");
@@ -41,10 +47,12 @@ public class EjercicioDAOImplJDBC implements EjercicioDAO {
                 ejercicio = new Ejercicio(idEjercicio, nombreEjercicio, categoriaEjercicio, descripcionEjercicio, fechaEjercicio, observacionesEjercicio);
 
             }
+            return ejercicio;
+            
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
-        return ejercicio;
+
     }
 
     @Override
@@ -90,10 +98,10 @@ public class EjercicioDAOImplJDBC implements EjercicioDAO {
 
     @Override
     public boolean delete(int idEjercicio) {
-        
+
         boolean borrado = false;
         try {
-            
+
             ConnectionFactory connectionFactory = new ConnectionFactoryImplDriveManager();
 
             String deleteSQL = "DELETE FROM ejercicios WHERE idEjercicio = ?";
@@ -119,11 +127,11 @@ public class EjercicioDAOImplJDBC implements EjercicioDAO {
 
     @Override
     public List<Ejercicio> findAll() {
-          
-         List<Ejercicio> ejercicios = new ArrayList<>();
-        
+
+        List<Ejercicio> ejercicios = new ArrayList<>();
+
         try {
-           
+
             ConnectionFactory connectionFactory = new ConnectionFactoryImplDriveManager();
 
             String selectSQL = "SELECT * FROM ejercicios";
@@ -149,10 +157,10 @@ public class EjercicioDAOImplJDBC implements EjercicioDAO {
 
     @Override
     public List<Ejercicio> findByCategoria(String categoriaEjercicio) {
-         List<Ejercicio> ejercicios = new ArrayList<>();
-        
+        List<Ejercicio> ejercicios = new ArrayList<>();
+
         try {
-           
+
             ConnectionFactory connectionFactory = new ConnectionFactoryImplDriveManager();
 
             String selectSQL = "SELECT * FROM ejercicios WHERE categoriaEjercicio = ?";

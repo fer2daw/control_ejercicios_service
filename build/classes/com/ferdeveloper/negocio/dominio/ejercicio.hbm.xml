@@ -5,10 +5,10 @@
 <hibernate-mapping>
 <class name="com.ferdeveloper.negocio.dominio.Ejercicio" table="ejercicios">
     <id column="idEjercicio" name="idEjercicio" type="integer"/>
-    <property name="nombreEjercicio" column="nombreEjercicio"/>
-    <property name="descripcionEjercicio" column="descripcionEjercicio"/>
-    <property name="categoriaEjercicio" column="categoriaEjercicio"/>
-    <property name="fechaEjercicio" column="fechaEjercicio"/>
-    <property name="observacionesEjercicio" column="observacionesEjercicio"/>
+    <property name="nombreEjercicio"/>
+    <property name="descripcionEjercicio"/>
+    <property name="categoriaEjercicio"/>
+    <property name="fechaEjercicio"/>
+    <property name="observacionesEjercicio"/>
 </class>
 </hibernate-mapping>
