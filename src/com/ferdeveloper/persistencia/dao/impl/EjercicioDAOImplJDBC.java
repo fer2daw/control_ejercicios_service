@@ -44,7 +44,7 @@ public class EjercicioDAOImplJDBC implements EjercicioDAO {
                 Date fechaEjercicio = rs.getDate("fechaEjercicio");
                 String observacionesEjercicio = rs.getString("observacionesEjercicio");
 
-                ejercicio = new Ejercicio(idEjercicio, nombreEjercicio, categoriaEjercicio, descripcionEjercicio, fechaEjercicio, observacionesEjercicio);
+                ejercicio = new Ejercicio(idEjercicio, nombreEjercicio, descripcionEjercicio, categoriaEjercicio, fechaEjercicio, observacionesEjercicio);
 
             }
             return ejercicio;
@@ -145,7 +145,7 @@ public class EjercicioDAOImplJDBC implements EjercicioDAO {
                 Date fechaEjercicio = rs.getDate("fechaEjercicio");
                 String observacionesEjercicio = rs.getString("observacionesEjercicio");
 
-                Ejercicio ejercicio = new Ejercicio(idEjercicio, nombreEjercicio, categoriaEjercicio, descripcionEjercicio, fechaEjercicio, observacionesEjercicio);
+                Ejercicio ejercicio = new Ejercicio(idEjercicio, nombreEjercicio, descripcionEjercicio, categoriaEjercicio, fechaEjercicio, observacionesEjercicio);
                 ejercicios.add(ejercicio);
 
             }
@@ -174,7 +174,7 @@ public class EjercicioDAOImplJDBC implements EjercicioDAO {
                 Date fechaEjercicio = rs.getDate("fechaEjercicio");
                 String observacionesEjercicio = rs.getString("observacionesEjercicio");
 
-                Ejercicio ejercicio = new Ejercicio(idEjercicio, nombreEjercicio, categoriaEjercicio, descripcionEjercicio, fechaEjercicio, observacionesEjercicio);
+                Ejercicio ejercicio = new Ejercicio(idEjercicio, nombreEjercicio, descripcionEjercicio, categoriaEjercicio, fechaEjercicio, observacionesEjercicio);
                 ejercicios.add(ejercicio);
 
             }
